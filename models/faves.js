@@ -7,6 +7,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   faves.associate = function(models) {
     // associations can be defined here
+    models.faves.belongsTo(models.user);
   };
   return faves;
 };

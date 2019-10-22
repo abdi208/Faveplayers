@@ -1,0 +1,23 @@
+    <p> <%= player.first_name%>  <%= player.last_name%></p>
+    
+    <p> <%= player.height_feet %> Ft <%= player.height_inches %> in. </p> 
+    
+    
+    <p> Position: <%= player.position %></p>
+    
+    <p> Team: <%= player.team.city %> <%= player.team.name %></p>
+
+
+    <hr />
+    <hr />
+
+
+    <h6>*If player height or position not present he is not on active roster</h6>
+
+
+    <form action="/faves" method="post">
+        <input type="hidden" name="playerid" value="<%= player.id %>">
+        <input type="hidden" name="name" value="<%= player.first_name %>">
+    
+        <input type="submit" value="Add to faves">
+    </form>

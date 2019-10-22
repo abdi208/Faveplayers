@@ -1,0 +1,7 @@
+<% results.forEach(function(result){%>
+    <p> <%= result.first_name%>  <%= result.last_name%></p>
+    <p> Team: <%= result.team.city %> <%= result.team.name %></p>
+
+    <a href="/name/<%= result.id %>">Learn More</a>
+    
+<%}) %>
