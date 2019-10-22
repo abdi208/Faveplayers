@@ -73,34 +73,15 @@ app.get('/', function(req, res) {
 });
 
 app.get('/profile', isLoggedin, function(req, res) {
-  res.render('profile');
+  db.faves.findAll()
+  .then(function(foundfaves) {
+      res.render('profile', { faves: foundfaves })
+  })
 });
 
 app.use('/auth', require('./controllers/auth'));
 app.use('/faves', require('./controllers/faves'));
 
-app.post('/faves', function(req, res) {
-  db.faves.findOrCreate({
-      where: {
-          firstname: req.body.firstname
-      },defaults: {
-          userID: req.body.userID,
-          lastname: req.body.lastname
-      }
-  }).then(function([fave, created]) {
-      console.log(`${fave.name} is ${created ? 'is created': 'in existance'}`)
-      res.redirect('/profile')
-  }).catch((error)=>{
-      console.log(error)
-      })
-})
-app.get('/faves', function(req, res) {
-  db.faves.findAll()
-  .then(function(foundfaves) {
-    console.log(foundfaves)
-      res.render('profile', { faves: foundfaves })
-  })
-})
 
 var server = app.listen(process.env.PORT || 3000);
 
