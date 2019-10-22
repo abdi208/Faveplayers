@@ -1,8 +1,13 @@
 const express = require('express');
 const axios = require('axios'); 
 const router = express.Router();
+const db = require('../models')
+
 
 router.get('/', function(req, res) {
+    res.render('faves/home')
+})
+router.get('/results', function(req, res) {
     axios({
         "method":"GET",
         "url":"https://free-nba.p.rapidapi.com/players",
@@ -17,7 +22,7 @@ router.get('/', function(req, res) {
         .then((response)=>{
             
             console.log(response.data.data)
-            res.render('results',{ results: response.data.data })
+            res.render('faves/results',{ results: response.data.data })
         })
         .catch((error)=>{
         console.log(error)
@@ -37,9 +42,10 @@ router.get('/:id', function(req, res) {
         }).then(function(foundPlayer) {
             console.log(id)
             console.log(foundPlayer.data)
-            res.render('detail',{ player: foundPlayer.data})
+            res.render('faves/details',{ player: foundPlayer.data})
         }).catch((error)=>{
             console.log(error)
             })
 })
+
 module.exports = router

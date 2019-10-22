@@ -21,14 +21,14 @@ app.use(helmet());
 
 // Rate limiter for log in and sign up
 const loginLimiter = new RateLimit({
-  windowMs: 1000 * 60 * 5,
+  windowMs: 1000,
   max: 3,
   delayMs: 0,
   message: 'Maximum login attempts exceeded. Please try again Later.'
 });
 
 const signupLimiter = new RateLimit({
-  windowMs: 1000 * 60 * 60,
+  windowMs: 1000,
   max: 3,
   delayMs: 0,
   message: 'Maximum signups reached, please try again after 1 hour.'
@@ -77,6 +77,30 @@ app.get('/profile', isLoggedin, function(req, res) {
 });
 
 app.use('/auth', require('./controllers/auth'));
+app.use('/faves', require('./controllers/faves'));
+
+app.post('/faves', function(req, res) {
+  db.faves.findOrCreate({
+      where: {
+          firstname: req.body.firstname
+      },defaults: {
+          userID: req.body.userID,
+          lastname: req.body.lastname
+      }
+  }).then(function([fave, created]) {
+      console.log(`${fave.name} is ${created ? 'is created': 'in existance'}`)
+      res.redirect('/profile')
+  }).catch((error)=>{
+      console.log(error)
+      })
+})
+app.get('/faves', function(req, res) {
+  db.faves.findAll()
+  .then(function(foundfaves) {
+    console.log(foundfaves)
+      res.render('profile', { faves: foundfaves })
+  })
+})
 
 var server = app.listen(process.env.PORT || 3000);
 

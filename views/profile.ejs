@@ -1,3 +1,6 @@
 <h2>Profile Page</h2>
+<% faves.forEach(fave => {%>
+    <p><a href="/results/<%= fave.playerid %>"><%= fave.name %> </a></p>
 
+<%})%>
 <a href="/">Home</a>

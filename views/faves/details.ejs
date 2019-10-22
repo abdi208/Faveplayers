@@ -16,8 +16,9 @@
 
 
     <form action="/faves" method="post">
-        <input type="hidden" name="playerid" value="<%= player.id %>">
-        <input type="hidden" name="name" value="<%= player.first_name %>">
+        <input type="hidden" name="firstname" value="<%= player.first_name %>">
+        <input type="hidden" name="lastname" value="<%= player.last_name %>">
+        <input type="hidden" name="userId" value= "<%= player.last_name %>">
     
         <input type="submit" value="Add to faves">
     </form>
