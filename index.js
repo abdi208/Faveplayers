@@ -75,6 +75,7 @@ app.get('/', function(req, res) {
 app.get('/profile', isLoggedin, function(req, res) {
   db.faves.findAll()
   .then(function(foundfaves) {
+  console.log('hellloooooooooooo',foundfaves)
       res.render('profile', { faves: foundfaves })
   })
 });

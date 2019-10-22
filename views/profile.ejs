@@ -1,8 +1,9 @@
 <h2>Profile Page</h2>
 
-<a href="/">Home</a>
+<a href="/">Home</a> | <a href="/auth/logout">Logout</a> | <a href="/faves">Search Players</a>
+<hr>
 <% faves.forEach(fave => {%>
-    <p><a href="/results/<%= fave.playerid %>"><%= fave.name %> </a></p>
+    <p><a href="/results/<%= fave.playerid %>"><%= fave.firstname %> <%= fave.lastname %> </a></p>
 
 <%})%>
 
