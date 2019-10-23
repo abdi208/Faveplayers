@@ -79,17 +79,12 @@ app.get('/profile', isLoggedin, function(req, res) {
   db.faves.findAll({
     where : {userId: req.user.id}
   }).then(function(foundfaves) {
-  console.log('hellloooooooooooo',foundfaves)
       res.render('profile', { faves: foundfaves })
   })
 });
 
 app.put('/profile/:id',isLoggedin, function(req, res) {
-  db.faves.destroy({
-    where: { id:  parseInt(req.params.id)}
-  }).then(function(data) {
-    res.redirect('/profile')
-  })
+  
 }); 
 
 app.delete('/profile/:id',isLoggedin, function(req, res) {

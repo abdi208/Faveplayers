@@ -8,7 +8,7 @@ const mb = mbClient({ accessToken: process.env.MAPBOX_KEY })
 const geocode = mbGeocode(mb)
 
 router.get('/', function (req, res) {
-  res.render('events/search');
+  res.render('events/search',{mapkey: process.env.MAPBOX_KEY, markers});
 });
 
 router.get('/results', function (req, res) {
@@ -41,7 +41,6 @@ router.post('/add', function(req, res) {
     }
   })
   .then(function([city, created]) {
-    console.log(`${city.name} was ${created ? 'created':'found'}`)
     res.redirect('/favorites')
   })
 })
@@ -65,7 +64,6 @@ router.get('/favorites', function(req, res) {
       }
         return JSON.stringify(markerObj)
     })
-    console.log(markers)
     res.render('cities/favorites', {cities, mapkey: process.env.MAPBOX_KEY, markers })
 
   })

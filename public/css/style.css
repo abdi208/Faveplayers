@@ -1,3 +1,18 @@
-body {
+body ,html{
     background-color: black;
+    color: white;
+    text-align: center;
+    justify-content: space-between;
 }
+#favesBtn {
+    color: black ;
+} 
+#detail {
+    margin-top: 200px;
+    
+} 
+#search {
+    margin: 0 auto;
+    margin-top: 300px;
+    
+} 
