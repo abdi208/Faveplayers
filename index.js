@@ -11,6 +11,12 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const db = require('./models');
 const RateLimit = require('express-rate-limit');
 const methodOverride = require('method-override');
+
+// const mbClient = require('@mapbox/mapbox-sdk');
+// const mbGeocode = require('@mapbox/mapbox-sdk/services/geocoding')
+// const mb = mbClient({ accessToken: process.env.MAPBOX_KEY })
+// const geocode = mbGeocode(mb)
+
 app.set('view engine', 'ejs');
 
 app.use(require('morgan')('dev'));
@@ -92,7 +98,7 @@ app.delete('/profile/:id',isLoggedin, function(req, res) {
 }); 
 app.use('/auth', require('./controllers/auth'));
 app.use('/faves', require('./controllers/faves'));
-
+app.use('/events', require('./controllers/events'));
 
 var server = app.listen(process.env.PORT || 3000);
 
