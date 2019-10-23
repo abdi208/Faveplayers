@@ -1,7 +1,15 @@
-<% results.forEach(function(result){%>
-    <p> <%= result.first_name%>  <%= result.last_name%></p>
-    <p> Team: <%= result.team.city %> <%= result.team.name %></p>
+<hr>
+<hr>
+<ul class="list-group">
 
-    <a href="/faves/<%= result.id %>">Learn More</a>
-    
-<%}) %>
+        <% results.forEach(function(result){%>
+            <li class="list-group-item active">
+                    <p> <%= result.first_name%>  <%= result.last_name%></p>
+                    <p> Team: <%= result.team.city %> <%= result.team.name %></p>
+                    
+            </li>
+            <a href="/faves/<%= result.id %>">Learn More</a>
+        <%}) %>
+    </ul> 
+
+
