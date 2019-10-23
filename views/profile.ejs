@@ -2,9 +2,19 @@
 
 <a href="/">Home</a> | <a href="/auth/logout">Logout</a> | <a href="/faves">Search Players</a> | <a href="/events">Create Event</a>
 <hr>
-<% faves.forEach(fave => {%>
-    <p><a href="/results/<%= fave.playerid %>"><%= fave.firstname %> <%= fave.lastname %> </a></p>
-    <form action="/profile/<%= fave.id %>?_method=DELETE" method="POST">
-        <input type="submit" value="DELETE">
-        </form>
-<%})%>
+
+<ul class="list-group">
+        <% faves.forEach(fave => {%>
+                <li class="list-group-item active"><%= fave.firstname %> <%= fave.lastname %>
+                </li>
+                <hr>
+                <form action="/profile/<%= fave.id %>?_method=DELETE" method="POST">
+                <input class="btn btn-primary" type="submit" value="DELETE">
+
+                    <!-- <input type="submit" value="DELETE"> -->
+                    </form>
+                    <hr>
+        <%})%>
+        
+    </ul>
+
