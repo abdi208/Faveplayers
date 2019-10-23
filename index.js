@@ -84,6 +84,14 @@ app.get('/profile', isLoggedin, function(req, res) {
   })
 });
 
+app.put('/profile/:id',isLoggedin, function(req, res) {
+  db.faves.destroy({
+    where: { id:  parseInt(req.params.id)}
+  }).then(function(data) {
+    res.redirect('/profile')
+  })
+}); 
+
 app.delete('/profile/:id',isLoggedin, function(req, res) {
   db.faves.destroy({
     where: { id:  parseInt(req.params.id)}
