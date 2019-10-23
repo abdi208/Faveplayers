@@ -12,11 +12,6 @@ const db = require('./models');
 const RateLimit = require('express-rate-limit');
 const methodOverride = require('method-override');
 
-// const mbClient = require('@mapbox/mapbox-sdk');
-// const mbGeocode = require('@mapbox/mapbox-sdk/services/geocoding')
-// const mb = mbClient({ accessToken: process.env.MAPBOX_KEY })
-// const geocode = mbGeocode(mb)
-
 app.set('view engine', 'ejs');
 
 app.use(require('morgan')('dev'));
