@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const router = express.Router();
 const db = require('../models')
@@ -23,48 +24,50 @@ router.get('/results', function (req, res) {
         long: result.center[0]
       }
     })
-    res.render('events/results', {query: req.query, results});
+    res.render('events/results',{ query: req.query, results } );
+  }).catch(function(err) {
+    console.log(err)
   })
 });
 
-// router.post('/add', function(req, res) {
-//   db.city.findOrCreate({
-//     where: {
-//       name: req.body.name
-//     },
-//     defaults: {
-//       lat: req.body.lat,
-//       long:req.body.long
-//     }
-//   })
-//   .then(function([city, created]) {
-//     console.log(`${city.name} was ${created ? 'created':'found'}`)
-//     res.redirect('/favorites')
-//   })
-// })
+router.post('/add', function(req, res) {
+  db.city.findOrCreate({
+    where: {
+      name: req.body.name
+    },
+    defaults: {
+      lat: req.body.lat,
+      long:req.body.long
+    }
+  })
+  .then(function([city, created]) {
+    console.log(`${city.name} was ${created ? 'created':'found'}`)
+    res.redirect('/favorites')
+  })
+})
 
 
-// router.get('/favorites', function(req, res) {
-//     db.city.findAll()
-//   .then(function(cities) {
-//     let markers = cities.map(city =>{
-//       let markerObj = {
-//         "type": "Feature",
-//         "geometry": {
-//           "type": "Point",
-//           "coordinates" : [city.long, city.lat]
-//         },
-//         "properties": {
-//           "title": city.name,
-//           "icon": "airport"
-//         }
+router.get('/favorites', function(req, res) {
+    db.city.findAll()
+  .then(function(cities) {
+    let markers = cities.map(city =>{
+      let markerObj = {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates" : [city.long, city.lat]
+        },
+        "properties": {
+          "title": city.name,
+          "icon": "airport"
+        }
       
-//       }
-//         return JSON.stringify(markerObj)
-//     })
-//     console.log(markers)
-//     res.render('cities/favorites', {cities, mapkey: process.env.MAPBOX_KEY, markers })
+      }
+        return JSON.stringify(markerObj)
+    })
+    console.log(markers)
+    res.render('cities/favorites', {cities, mapkey: process.env.MAPBOX_KEY, markers })
 
-//   })
-// })
+  })
+})
 module.exports = router;
