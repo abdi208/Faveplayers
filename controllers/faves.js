@@ -51,9 +51,11 @@ router.get('/:id', function(req, res) {
 router.post('/', function(req, res) {
     db.faves.findOrCreate({
         where: {
-            firstname: req.body.firstname
+            firstname: req.body.firstname,
+            userId: req.user.id
         },defaults: {
             lastname: req.body.lastname
+            
         }
     }).then(function([fave, created]) {
         console.log(`${fave.name} is ${created ? 'is created': 'in existance'}`)
@@ -62,5 +64,7 @@ router.post('/', function(req, res) {
         console.log(error)
         })
 })
+
+
 
 module.exports = router

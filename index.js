@@ -10,26 +10,28 @@ const app = express();
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const db = require('./models');
 const RateLimit = require('express-rate-limit');
-
+const methodOverride = require('method-override');
 app.set('view engine', 'ejs');
 
 app.use(require('morgan')('dev'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public'));
 app.use(ejsLayouts);
+app.use(methodOverride('_method'))
+
 app.use(helmet());
 
 // Rate limiter for log in and sign up
 const loginLimiter = new RateLimit({
   windowMs: 1000,
-  max: 3,
+  // max: 3,
   delayMs: 0,
   message: 'Maximum login attempts exceeded. Please try again Later.'
 });
 
 const signupLimiter = new RateLimit({
   windowMs: 1000,
-  max: 3,
+  // max: 3,
   delayMs: 0,
   message: 'Maximum signups reached, please try again after 1 hour.'
 });
@@ -73,13 +75,21 @@ app.get('/', function(req, res) {
 });
 
 app.get('/profile', isLoggedin, function(req, res) {
-  db.faves.findAll()
-  .then(function(foundfaves) {
+  db.faves.findAll({
+    where : {userId: req.user.id}
+  }).then(function(foundfaves) {
   console.log('hellloooooooooooo',foundfaves)
       res.render('profile', { faves: foundfaves })
   })
 });
 
+app.delete('/profile/:id',isLoggedin, function(req, res) {
+  db.faves.destroy({
+    where: { id:  parseInt(req.params.id)}
+  }).then(function(data) {
+    res.redirect('/profile')
+  })
+}); 
 app.use('/auth', require('./controllers/auth'));
 app.use('/faves', require('./controllers/faves'));
 
