@@ -1,22 +1,19 @@
 <h2>Profile Page</h2>
 
-<a href="/">Home</a> | <a href="/auth/logout">Logout</a> | <a href="/faves">Search Players</a> | <a href="/events">Create Event</a>
+<a href="/">Home</a> | <a href="/auth/logout">Logout</a> | <a href="/faves">Search Players</a> | <a href="/events">Create Event</a> 
 <hr>
 
 
-<h4>Hey <%- (currentUser.name) %>, these are ur favorite players</h4>
+<h4>Hey <%- (currentUser.name) %>, these are your favorite players</h4>
 <ul class="list-group">
-        <% faves.forEach(fave => {%>
-            
-                <li class="list-group-item list-group-item-dark"><a href="/faves/<%= fave.playerId %>"><%= fave.firstname %> <%= fave.lastname %></a>
-                    
-                    <form action="/profile/<%= fave.id %>?_method=DELETE" method="POST">
-                        <input class="btn btn-primary" type="submit" value="DELETE">
-                    </form>
-                </li>
-                    <hr>
-                    
-        <%})%>
+    <% faves.forEach(fave => {%>
+        <li class="list-group-item list-group-item-dark"><a href="/faves/<%= fave.playerId %>"><%= fave.firstname %> <%= fave.lastname %></a>
+            <form action="/profile/<%= fave.id %>?_method=DELETE" method="POST">
+                <input class="btn btn-primary" type="submit" value="DELETE">
+            </form>
+        </li>
+            <hr>
+    <%})%>
 </ul>
 
 
