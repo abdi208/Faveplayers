@@ -1,8 +1,6 @@
-body ,html{
+body {
     background-color: black;
-    color: white;
-    text-align: center;
-    justify-content: space-between;
+
 }
 #favesBtn {
     color: black ;
@@ -12,7 +10,12 @@ body ,html{
     
 } 
 #search {
-    margin: 0 auto;
-    margin-top: 300px;
-    
+    margin: 120px; 
+     
 } 
+#h3{
+    margin: 100px;  
+} 
+/* .list-group{
+    color: white;
+} */

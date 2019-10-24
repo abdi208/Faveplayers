@@ -17,15 +17,8 @@
         <h6>*If player height or position not present he is not on active roster</h6>
 
     </div>
+    <a href="/faves/<%= player.id %>/edit">Edit this player</a>
    
-   
 
 
-    <form action="/faves" method="post">
-        <input type="hidden" name="firstname" value="<%= player.first_name %>">
-        <input type="hidden" name="lastname" value="<%= player.last_name %>">
-        <div id = "favesBtn">
-            <input type="submit" value="Add to faves">
-
-        </div>
-    </form>
+    

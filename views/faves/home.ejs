@@ -1,9 +1,12 @@
-<div id = "search">
-        <form action = "/faves/results" method = "GET">
-            <label for="query">Name</label>
-            <input type="text" name="search" first_name="query" placeholder="Enter a players name">
-        
-            <input class="btn btn-primary" type="submit" value="Search">
-        </form>  
+<h3 id ="h3">
+        Cast your ballot...
+        <small class="text-muted">Search Players Now!</small>
+      </h3>
 
+<div id = "search">
+        <form action = "/faves/results" method = "GET" class="form-inline">
+            <input class="form-control mr-sm-2" type="search" name="search" first_name="query" aria-label="Search" placeholder="Enter a players name..">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>  
+        
 </div>

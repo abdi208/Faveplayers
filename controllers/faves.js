@@ -7,6 +7,11 @@ const db = require('../models')
 router.get('/', function(req, res) {
     res.render('faves/home')
 })
+router.get('/:id/edit', function(req, res) {
+    db.faves.findByPk(parseInt(req.params.id)).then(function(fave){
+        res.render('faves/edit', {fave})
+    })
+})
 router.get('/results', function(req, res) {
     axios({
         "method":"GET",
@@ -65,6 +70,18 @@ router.post('/', function(req, res) {
         })
 })
 
-
+router.put('/:id', function(req, res) {
+    db.faves.update({
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
+    userId: parseInt(req.body.userId)
+    }, {
+    where: { id:  parseInt(req.params.id)}
+    }).then(function(fave) {
+    res.redirect('/profile')
+    }).catch((error) =>{
+        console.log(error)
+    })
+}); 
 
 module.exports = router

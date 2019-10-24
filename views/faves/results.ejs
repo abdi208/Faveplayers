@@ -8,8 +8,16 @@
                     <p> Team: <%= result.team.city %> <%= result.team.name %></p>
                     
             </li>
-            <a href="/faves/<%= result.id %>">Learn More</a>
+           
+            <form action="/faves" method="post">
+                <input type="hidden" name="firstname" value="<%= result.first_name %>">
+                <input type="hidden" name="lastname" value="<%= result.last_name %>">
+        
+                <div id = "favesBtn">
+                    <input type="submit" value="Add to faves">
+        
+                </div>
+            </form>
         <%}) %>
     </ul> 
-
 

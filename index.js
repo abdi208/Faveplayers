@@ -83,9 +83,7 @@ app.get('/profile', isLoggedin, function(req, res) {
   })
 });
 
-app.put('/profile/:id',isLoggedin, function(req, res) {
-  
-}); 
+
 
 app.delete('/profile/:id',isLoggedin, function(req, res) {
   db.faves.destroy({
@@ -94,9 +92,11 @@ app.delete('/profile/:id',isLoggedin, function(req, res) {
     res.redirect('/profile')
   })
 }); 
+
 app.use('/auth', require('./controllers/auth'));
 app.use('/faves', require('./controllers/faves'));
 app.use('/events', require('./controllers/events'));
+// app.use('/allstars', require('./controllers/allstars'));
 
 var server = app.listen(process.env.PORT || 3000);
 
