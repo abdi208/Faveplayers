@@ -1,8 +1,8 @@
-# Express Authentication
+# NBA BALLOT
 
-Express authentication template using Passport + flash messages + custom middleware
+----
 
-## Getting Started
+## How it Works
 
 #### Scaffold w/tests (see `master` branch)
 
