@@ -51,7 +51,7 @@ router.get('/:id', function(req, res) {
         }).catch((error)=>{
             console.log(error)
             })
-
+        
 })
 
 router.post('/', function(req, res) {
@@ -76,11 +76,10 @@ router.post('/', function(req, res) {
 })
 
 router.put('/:id', function(req, res) {
-    db.fave.update({
-    firstname: req.body.firstname,
-    lastname: req.body.lastname,
+    db.user.update({
+    name: req.body.name,
     }, {
-    where: { playerId:  parseInt(req.params.id)}
+    where: { userId:  parseInt(req.params.id)}
     }).then(function(fave) {
     res.redirect('/profile')
     }).catch((error) =>{

@@ -5,7 +5,6 @@
         <li class="list-group-item active">
                 <p> <%= result.first_name%>  <%= result.last_name%></p>
                 <p> Team: <%= result.team.city %> <%= result.team.name %></p>
-                
         </li>
         <form action="/faves" method="post">
             <input type="hidden" name="firstname" value="<%= result.first_name %>">
