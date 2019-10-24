@@ -91,7 +91,19 @@ app.delete('/profile/:id',isLoggedin, function(req, res) {
   }).then(function(data) {
     res.redirect('/profile')
   })
-}); 
+});
+
+app.put('/profile', function(req, res) {
+  db.user.update({
+      name: req.body.name,
+  }, {
+      where: { id:  parseInt(req.user.id)}
+  }).then(function(fave) {
+      res.redirect('/profile')
+  }).catch((error) =>{
+      console.log(error)
+  })
+});
 
 app.use('/auth', require('./controllers/auth'));
 app.use('/faves', require('./controllers/faves'));

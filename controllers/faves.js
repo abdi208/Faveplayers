@@ -75,16 +75,6 @@ router.post('/', function(req, res) {
         })
 })
 
-router.put('/:id', function(req, res) {
-    db.user.update({
-    name: req.body.name,
-    }, {
-    where: { userId:  parseInt(req.params.id)}
-    }).then(function(fave) {
-    res.redirect('/profile')
-    }).catch((error) =>{
-        console.log(error)
-    })
-}); 
+ 
 
 module.exports = router
