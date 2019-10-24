@@ -12,6 +12,7 @@
             <form action="/faves" method="post">
                 <input type="hidden" name="firstname" value="<%= result.first_name %>">
                 <input type="hidden" name="lastname" value="<%= result.last_name %>">
+                <input type="hidden" name="playerId" value="<%= result.id %>">
         
                 <div id = "favesBtn">
                     <input type="submit" value="Add to faves">

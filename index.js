@@ -76,7 +76,7 @@ app.get('/', function(req, res) {
 });
 
 app.get('/profile', isLoggedin, function(req, res) {
-  db.faves.findAll({
+  db.fave.findAll({
     where : {userId: req.user.id}
   }).then(function(foundfaves) {
       res.render('profile', { faves: foundfaves })
@@ -86,7 +86,7 @@ app.get('/profile', isLoggedin, function(req, res) {
 
 
 app.delete('/profile/:id',isLoggedin, function(req, res) {
-  db.faves.destroy({
+  db.fave.destroy({
     where: { id:  parseInt(req.params.id)}
   }).then(function(data) {
     res.redirect('/profile')
