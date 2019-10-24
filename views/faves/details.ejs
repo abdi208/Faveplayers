@@ -1,24 +1,14 @@
-   <div id = "detail">
-        <p> <%= player.first_name%>  <%= player.last_name%></p>
+<div id = "detail">
     
-        <p> <%= player.height_feet %> Ft <%= player.height_inches %> in. </p> 
-        
-        <p> Weight:<%= player.weight_pounds%> %></p>
-        
-        <p> Position: <%= player.position %></p>
-        
-        <p> Team: <%= player.team.city %> <%= player.team.name %></p>
+    <p> <%= player.height_feet %> Ft <%= player.height_inches %> in. </p> 
     
+    <p> Weight:<%= player.weight_pounds%> %></p>
     
-        <hr />
-        <hr />
+    <p> Position: <%= player.position %></p>
     
-    
-        <h6>*If player height or position not present he is not on active roster</h6>
-
-    </div>
-    <a href="/faves/<%= player.id %>/edit">Edit this player</a>
-   
-
-
-    
+    <p> Team: <%= player.team.city %> <%= player.team.name %></p>
+<hr />
+<hr />
+<h6>*If player height or position not present he is not on active roster</h6>
+</div>
+<a href="/faves/<%= player.id %>/edit">Edit this player</a>

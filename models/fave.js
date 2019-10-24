@@ -4,11 +4,13 @@ module.exports = (sequelize, DataTypes) => {
     firstname: DataTypes.STRING,
     lastname: DataTypes.STRING,
     userId: DataTypes.INTEGER,
-    playerId: DataTypes.INTEGER
+    playerId: DataTypes.INTEGER,
+    height: DataTypes.STRING,
+    weight: DataTypes.STRING,
+    team: DataTypes.STRING
   }, {});
   fave.associate = function(models) {
     // associations can be defined here
-    models.fave.belongsTo(models.user);
   };
   return fave;
 };

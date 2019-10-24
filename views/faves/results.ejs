@@ -1,24 +1,23 @@
 <hr>
 <hr>
 <ul class="list-group">
-
-        <% results.forEach(function(result){%>
-            <li class="list-group-item active">
-                    <p> <%= result.first_name%>  <%= result.last_name%></p>
-                    <p> Team: <%= result.team.city %> <%= result.team.name %></p>
-                    
-            </li>
-           
-            <form action="/faves" method="post">
-                <input type="hidden" name="firstname" value="<%= result.first_name %>">
-                <input type="hidden" name="lastname" value="<%= result.last_name %>">
-                <input type="hidden" name="playerId" value="<%= result.id %>">
-        
-                <div id = "favesBtn">
-                    <input type="submit" value="Add to faves">
-        
-                </div>
-            </form>
-        <%}) %>
-    </ul> 
+    <% results.forEach(function(result){%>
+        <li class="list-group-item active">
+                <p> <%= result.first_name%>  <%= result.last_name%></p>
+                <p> Team: <%= result.team.city %> <%= result.team.name %></p>
+                
+        </li>
+        <form action="/faves" method="post">
+            <input type="hidden" name="firstname" value="<%= result.first_name %>">
+            <input type="hidden" name="lastname" value="<%= result.last_name %>">
+            <input type="hidden" name="playerId" value="<%= result.id %>">
+            <input type="hidden" name="height" value="<%= result.height_feet %>">
+            <input type="hidden" name="weight" value="<%= result.weight_pounds %>">
+            <input type="hidden" name="team" value="<%= result.team.full_name %>">
+            <div id = "favesBtn">
+                <input type="submit" value="Add to faves">
+            </div>
+        </form>
+    <%}) %>
+</ul> 
 

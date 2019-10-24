@@ -20,6 +20,15 @@ module.exports = {
       playerId: {
         type: Sequelize.INTEGER
       },
+      height: {
+        type: Sequelize.STRING
+      },
+      weight: {
+        type: Sequelize.STRING
+      },
+      team: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
